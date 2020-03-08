@@ -20,6 +20,7 @@
     <code>
       git clone https://github.com/twikantoro/nori-onsite.git
     </code>
+    <br />
     <code>
       composer install
     </code>
