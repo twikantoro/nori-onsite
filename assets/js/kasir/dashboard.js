@@ -21,18 +21,18 @@ function timeRefresh(){
 }
 function cekBedaUnserved(){
   url = $('#base_url').val()+'antrian/get_firstnlast_unserved';
-  ////console.log(url);
+  //////console.log(url);
   $.get( url, function( data ) {
     obj = JSON.parse(data);
     newUnservedFirst = obj.unservedFirst;
     newUnservedLast = obj.unservedLast;
-    ////console.log($('#unserved').val());
+    //////console.log($('#unserved').val());
     if(newUnservedFirst!=$('#unservedFirst').val()||newUnservedLast!=$('#unservedLast').val()){
       buildUnserved();
       $('#unservedFirst').val(newUnservedFirst);
       $('#unservedLast').val(newUnservedLast);
     }
-    ////console.log($('#unserved').val());
+    //////console.log($('#unserved').val());
   });
 }
 function buildUnserved(){
@@ -44,7 +44,7 @@ function buildUnserved(){
     for(i=0;i<rows.length;i++){
       html = html.concat(createRowUnserved(rows[i],i+1));
     }
-    ////console.log(html);
+    //////console.log(html);
     $('#unserveds').html(html);
   });
 }
@@ -72,53 +72,53 @@ function createRowUnserved(row,num){
 function layani1(id){
   removeRow(id);
   url = $('#base_url').val()+'antrian/layani/1/'+id;
-  //console.log(url);
+  ////console.log(url);
   $.get( url, function( data ) {});
 }
 function layani2(id){
   removeRow(id);
   url = $('#base_url').val()+'antrian/layani/2/'+id;
-  //console.log(url);
+  ////console.log(url);
   $.get( url, function( data ) {});
 }
 function layani3(id){
   removeRow(id);
   url = $('#base_url').val()+'antrian/layani/3/'+id;
-  //console.log(url);
+  ////console.log(url);
   $.get( url, function( data ) {});
 }
 function layani4(id){
   removeRow(id);
   url = $('#base_url').val()+'antrian/layani/4/'+id;
-  //console.log(url);
+  ////console.log(url);
   $.get( url, function( data ) {});
 }
 function layani5(id){
   removeRow(id);
   url = $('#base_url').val()+'antrian/layani/5/'+id;
-  //console.log(url);
+  ////console.log(url);
   $.get( url, function( data ) {});
 }
 function layani6(id){
   removeRow(id);
   url = $('#base_url').val()+'antrian/layani/6/'+id;
-  //console.log(url);
+  ////console.log(url);
   $.get( url, function( data ) {});
 }
 function cekBedaServed(){
   url = $('#base_url').val()+'antrian/get_firstnlast_served';
-  ////console.log(url);
+  //////console.log(url);
   $.get( url, function( data ) {
     obj = JSON.parse(data);
     newServedFirst = obj.servedFirst;
     newServedLast = obj.servedLast;
-    ////console.log($('#unserved').val());
+    //////console.log($('#unserved').val());
     if(newServedFirst!=$('#servedFirst').val()||newServedLast!=$('#servedLast').val()){
       buildServed();
       $('#servedFirst').val(newServedFirst);
       $('#servedLast').val(newServedLast);
     }
-    ////console.log($('#unserved').val());
+    //////console.log($('#unserved').val());
   });
 }
 function buildServed(){
@@ -130,7 +130,7 @@ function buildServed(){
     for(i=0;i<rows.length;i++){
       htmlServed = htmlServed.concat(createRowServed(rows[i],i+1));
     }
-    ////console.log(html);
+    //////console.log(html);
     $('#serveds').html(htmlServed);
   });
 }
@@ -154,7 +154,7 @@ function undo(id)
 {
   removeRow(id);
   url = $('#base_url').val()+'antrian/undo/'+id;
-  //console.log(url);
+  ////console.log(url);
   $.get( url, function( data ) {});
 }
 function removeRow(id)
@@ -194,10 +194,10 @@ function cekKeaktifan()
 function disable_loket(loket)
 {
   $('#unserveds').find('.loket'+loket).addClass('disabled btn-danger').removeClass('btn-info')
-  //console.log('disabled loket '+loket)
+  ////console.log('disabled loket '+loket)
 }
 function enable_loket(loket)
 {
   $('#unserveds').find('.loket'+loket).removeClass('disabled').addClass('btn-info');
-  //console.log('enabled loket '+loket)
+  ////console.log('enabled loket '+loket)
 }

@@ -7,8 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo base_url('assets/css/styleb.css') ?>"/>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.css') ?>"/>
 
-    <script src="<?php echo base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
+    <script src="<?php echo base_url('vendor/almasaeed2010/adminlte/plugins/jquery/jquery.min.js') ?>"></script>
+    <script src="<?php echo base_url('vendor/almasaeed2010/adminlte/plugins/bootstrap/js/bootstrap.min.js') ?>"></script>
     <style>
       body {
         height: 100vh;
@@ -445,7 +445,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
              echo '<audio id="'.$judul.'" src="'.base_url().'assets/audio/jawa/'.$judul.'.mp3" type="audio/mpeg"></audio>';
 
            }?>
-    <script src="<?php echo base_url()?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?php echo base_url()?>vendor/almasaeed2010/adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
     <script type="text/javascript">
       window.onload = function (){
         //updateTampilan();

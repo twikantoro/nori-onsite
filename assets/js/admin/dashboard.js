@@ -39,7 +39,7 @@ $(document).ready(function() {
   });
   function setUrutanInLokets(){
     url = site+'antrian/getUrutanInLokets';
-    console.log(url);
+    //console.log(url);
     $.getJSON(url, function(result){
       if($('#loket1_urutan').text()!=result["loket1_urutan"])
       {

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Mar 2020 pada 22.02
--- Versi server: 10.1.31-MariaDB
--- Versi PHP: 5.6.34
+-- Waktu pembuatan: 08 Mar 2020 pada 13.06
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `nori-magang-six`
+-- Database: `nori-magang`
 --
 
 -- --------------------------------------------------------
@@ -34,7 +34,7 @@ CREATE TABLE `antrian` (
   `urutan` int(11) NOT NULL,
   `loket` int(2) NOT NULL,
   `tanggal` date NOT NULL,
-  `waktu_masuk` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `waktu_masuk` timestamp NOT NULL DEFAULT current_timestamp(),
   `waktu_dilayani` timestamp NULL DEFAULT NULL,
   `status` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -112,8 +112,8 @@ CREATE TABLE `konfigurasi` (
   `loket4_status` tinyint(1) DEFAULT NULL,
   `loket5_status` tinyint(4) NOT NULL,
   `loket6_status` tinyint(4) NOT NULL,
-  `config_json` text,
-  `running_text` text
+  `config_json` text DEFAULT NULL,
+  `running_text` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -142,9 +142,7 @@ CREATE TABLE `playlist` (
 --
 
 INSERT INTO `playlist` (`id`, `urutan`, `nama`, `jenis`, `durasi`) VALUES
-(2, 1, 'images3.jpg', 'image/jpeg', 10),
-(3, 3, 'bgantrian112.jpg', 'image/jpeg', 10),
-(4, 2, 'yuli_kriswantoro1.jpg', 'image/jpeg', 10);
+(2, 1, 'images3.jpg', 'image/jpeg', 10);
 
 -- --------------------------------------------------------
 
@@ -170,7 +168,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `tata_letak`, `background`, `running_text`, `running_text_warna`, `running_text_background`, `playlist`, `loket_text_warna`, `loket_border_warna`, `loket_kotak_warna`) VALUES
-(1, '6', 'bgantrian1.jpg', 'Kantor Perwakilan Bank Indonesia Solo Kantor Perwakilan Bank Indonesia Solo', '', '', '', '', '', '');
+(1, '6', 'bgantrian.jpg', 'Kantor Perwakilan Bank Indonesia Solo Kantor Perwakilan Bank Indonesia Solo', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -184,7 +182,7 @@ CREATE TABLE `user` (
   `password` varchar(64) NOT NULL,
   `nama` varchar(32) NOT NULL,
   `role` varchar(16) NOT NULL DEFAULT 'kasir',
-  `aktif` tinyint(1) NOT NULL DEFAULT '1'
+  `aktif` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
