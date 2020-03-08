@@ -1,0 +1,215 @@
+
+		
+		.kontener {
+			position: relative;
+		}
+		.runningtext {
+			height:3em;
+			width:100%;
+			background: rgba(0,0,0,0.6);
+			color:white;
+			position: absolute;
+			bottom:0px;
+			overflow:hidden;
+		}
+		.textrunningtext {
+			font-size:2em;
+			padding-left:10px;
+			float: left;
+		}
+		.kontenerrunningtext {
+			width:300vw;
+		}
+		
+		.kontenervideo2{
+			//<!--background-image: url('');-->
+			background-size:contain;background-repeat: no-repeat;background-position:center;
+			height:33.75vw;width:60vw;
+			border:none;
+			background-color: black;
+			margin: 0px;
+		}
+		.kontenervideo2 img{
+			height:33.75vw;width:60vw;
+		}
+		.kontenervideo2 video{
+			height:33.75vw;width:60vw;
+		}
+		.emphasize-dark {
+			box-shadow: 0 0 5px 2px rgba(0,0,0,.35);
+			background: linear-gradient(to right, #000000, #111111, #000000), linear-gradient(to right, #8f6B29, #FDE08D, #DF9F28);
+			opacity: 0.9;
+			border: double 0px;
+			//border-style: solid;
+			//border-image: linear-gradient(to right, #8f6B29, #FDE08D, #DF9F28) 1 stretch;
+			background-origin: border-box;
+			background-clip: content-box, border-box;
+			//width:100%;margin:auto;margin-bottom:1.5vw;padding:0.4em;overflow:hidden;
+			border-radius:50px;
+		}
+		hr { 
+			display: block;
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+			margin-left: auto;
+			margin-right: auto;
+			border-style: inset;
+			border-width: 1px;
+			width: 80%;
+			color: white;
+		} 
+		.baris {
+			width:100%;
+		}
+		.kol-kiri {
+			height: 100vh;
+			width: 40vw;
+			margin: 0px;
+			padding: 1em;
+			background-color: blue;
+		}
+		.kol-kanan {
+			height: 100vh;
+			//width: 60vw;
+			margin: 0px;
+			padding: 1em;
+			padding-left: 0px;
+			background-color: yellow;
+		}
+		.kiri {
+			height:100vh;
+			background-color: blue;
+		}
+		.kanan {
+			height:100vh;
+			background-color: yellow;
+			padding: 10px;
+			padding-left: 0px;
+		}
+		.lokets {
+			height:20vh;
+			margin:0px;
+			margin-bottom:1vw;
+			background-color: blue;
+			margin-right:1vw !important;
+			font-weight: bold;
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+		}
+		.emphasize-dark {
+			box-shadow: 0 0 5px 2px rgba(0,0,0,.35);
+			background: linear-gradient(to right, #000, #111, #000), linear-gradient(to right, #046db4, #058fec, #046db4);
+			opacity: 0.9;
+			border: double 0px;
+			//border-style: solid;
+			//border-image: linear-gradient(to right, #8f6B29, #FDE08D, #DF9F28) 1 stretch;
+			background-origin: border-box;
+			background-clip: content-box, border-box;
+			//width:100%;margin:auto;margin-bottom:1.5vw;padding:0.4em;overflow:hidden;
+			border-radius:20px;
+		}
+		.kotakloket {
+			box-shadow: 0 0 5px 2px rgba(0,0,0,.35);
+			border-radius: 15px;
+			height: 14vh;
+			width: 14vh;
+			background: linear-gradient(to right, #046db4, #058fec);
+			padding: 5px;
+		}
+		.tulisanloket {
+			
+			height: 25%;
+			width: 100%;
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			text-align: center;
+			color: #111111;
+			font-size: 3vh;
+		}
+		.angkaloket {
+			
+			width: 100%;
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			text-align: center;
+			color: #111111;
+			margin:auto;
+			font-size: 9.7vh;
+			
+			line-height: 1em;
+		}
+		.nomorantrian {
+			font-size: 12.4vh;
+			color: #058fec;
+			
+			margin:auto;
+		}
+		.kotakinformasi {
+			width:50vw;height:20vh !important;
+			background-color:#F9F9F9;margin-left:0vw;
+			position:absolute;bottom:5.2vw;
+			text-align: justify !important;overflow:hidden !important;
+			font-weight: 700;
+			opacity: 1; color: #FFFEEE; border-radius: 0vw; line-height: 1.4em;
+			/* -moz-text-align-last: center; text-align-last: center; */
+			font-family: Arial !important;
+			font-size: 16px;
+			left:7vw
+		}
+		.modal1 {
+		  position: fixed;
+		  top: 0;
+		  right: 0;
+		  bottom: 0;
+		  left: 0;
+		  z-index: 1050;
+		  display: block;
+		  overflow: hidden;
+		  outline: 0;
+		}
+		.kotakkurs {
+		  	background: linear-gradient(to bottom, #046db4, #058fec, #046db4);
+		}
+		tr:nth-child(even) {background: #F9F9F9}
+		@keyframes phase-2 {
+		  from   {margin-top: 15vh}
+		  to {margin-top: 10vh}
+		}
+		@keyframes phase-1 {
+		  from   {margin-top: 10vh}
+		  to {margin-top: 5vh}
+		}
+		@keyframes phase0 {
+		  from   {margin-top: 5vh}
+		  to {margin-top: 0vh}
+		}
+		@keyframes phase1 {
+		  from   {margin-top: 0vh}
+		  to {margin-top: -5vh}
+		}
+		@keyframes phase2 {
+		  from   {margin-top: -5vh}
+		  to {margin-top: -10vh}
+		}
+		@keyframes phase3 {
+		  from   {margin-top: -10vh}
+		  to {margin-top: -15vh}
+		}
+		@keyframes phase4 {
+		  from   {margin-top: -15vh}
+		  to {margin-top: -20vh}
+		}
+		@keyframes phase5 {
+		  from   {margin-top: -20vh}
+		  to {margin-top: -25vh}
+		}
+		@keyframes phase6 {
+		  from   {margin-top: -25vh}
+		  to {margin-top: -30vh}
+		}
+		@keyframes phase7 {
+		  from   {margin-top: -30vh}
+		  to {margin-top: -35vh}
+		}
+		@keyframes phase8 {
+		  from   {margin-top: -35vh}
+		  to {margin-top: -0vh}
+		}
+
