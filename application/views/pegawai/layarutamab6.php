@@ -459,13 +459,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       function playNextMedia(){
         url = '<?php echo base_url() ?>pegawai/json_playlist';
         $.getJSON(url, function(result){
-          console.log(result)
-          console.log(result.length)
+          //console.log(result)
+          //console.log(result.length)
           if(mediaNumber==result.length){
             resetMediaNumber()
           }
           title = result[mediaNumber].nama;
-          console.log(title)
+          //console.log(title)
           var pattPic= /^.*\.(bmp|jpeg|png|jpg)$/i;
           var pattVid= /^.*\.(mp4|mkv|webm)$/i;
           if(title.match(pattPic)){
@@ -479,7 +479,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           }
           var ext = title.substr(title.lastIndexOf(".") + 1);
           var dur = result[mediaNumber].durasi
-          console.log(type)
+          //console.log(type)
           if(type=='vid'){
             playVideo(title,ext);
             incMediaNumber();
@@ -496,7 +496,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         this.mediaNumber = 0;
       }
       function playVideo(title,ext){
-        console.log('playing video: '+title+'.'+ext)
+        //console.log('playing video: '+title+'.'+ext)
         $('#video').add('<source src="<?php echo base_url()?>uploads/media/'+title+'" type="video/mp4">').attr('volume','0').attr('autoplay','true').appendTo('#video')
         vid = $('#video').get(0)
         vid.volume = 0
@@ -511,7 +511,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         })
       }
       function playImage(title,ext,dur){
-        console.log('playing image: '+title+'.'+ext)
+        //console.log('playing image: '+title+'.'+ext)
         $('#image').attr('src','<?php echo base_url()?>uploads/media/'+title)
         if($('#image').get(0).naturalWidth<=$('#image').get(0).naturalHeight){
           /*$('#image').css('height','28.125vw')
@@ -561,11 +561,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         return this.currentsoundid;
       }
       function playAudio(judul,soundid,delay){
-        console.log(judul);
+        //console.log(judul);
         var x = document.getElementById(judul);
         setTimeout(function(){
           currentsoundid=this.getSoundId();
-          //console.log(soundid);
+          ////console.log(soundid);
           if(this.currentsoundid==soundid){
             x.play();
           }
@@ -787,7 +787,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       }
       function setUrutanInLokets(){
         url = '<?php echo base_url() ?>antrian/getUrutanInLokets';
-        console.log(url);
+        //console.log(url);
         $.getJSON(url, function(result){
           if($('#loket1_urutan').text()!=result["loket1_urutan"])
           {

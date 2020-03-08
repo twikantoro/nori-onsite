@@ -489,7 +489,7 @@ class Antrian extends CI_Controller {
     $json['loket6_urutan'] = $this->antrian_model->getUrutanInLoket(6);
     echo json_encode($json);
   }
-  function getAudio($loket,$urutanPlus)
+  function getAudio($loket,$urutanPlus='')
   {
     $urutan = substr($urutanPlus,1);
     $strjenis = substr($urutanPlus,0,1);
