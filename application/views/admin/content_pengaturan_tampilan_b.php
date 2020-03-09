@@ -90,13 +90,13 @@
                   <table style="vertical-align:middle" class="table table-bordered">
                     <thead>                  
                       <tr>
-                        <th style="width: 10px">#</th>
+                        <!-- <th style="width: 10px">#</th> -->
                         <th>Nama file</th>
                         <th style="text-align:center">Preview</th>
                         <th style="text-align:center">Status</th>
                         <th style="text-align:center">Jenis</th>
                         <th style="text-align:center">Durasi</th>
-                        <th style="text-align:center">Action</th>
+                        <th style="text-align:center;min-width:150px">Action</th>
                       </tr>
                     </thead>
                     <tbody id="mediaTableBody">
@@ -261,7 +261,7 @@
     incHighestMedia()
     num = getHighestMedia()
     returns = '<tr class="rowx" id="row'+num+'">'
-    returns += '<td>'+rowsum+'</td>'
+    //returns += '<td>'+rowsum+'</td>'
     returns += '<td id="nama'+num+'"><form enctype="multipart/form-data" id="form'+num+'"><input type="file" name="media" onchange="fileIsReady('+num+');"></td>'
     returns += '<td id="preview'+num+'"></td>'
     returns += '<td style="text-align:center"><span id="tandaTanya'+num+'">??</span><a id="btnUpload'+num+'" style="display:none" href="javascript:void(0)" onclick="uploadMedia('+num+')" class="btn btn-primary">Upload</a></form>'
@@ -379,7 +379,7 @@ post_max_size = 1000M;
   {
     num = row.id
     returns = '<tr class="rowx" id="row'+num+'">'
-    returns += '<td id="urutan'+num+'">'+row.urutan+'</td>'
+    //returns += '<td id="urutan'+num+'">'+row.urutan+'</td>'
     returns += '<td id="nama'+num+'">'+row.nama+'</td>'
     returns += '<td id="preview'+num+'">'
     if(row.jenis.substring(0,1)=='i'){

@@ -388,7 +388,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
           </div>
           <div id="media" style="width:50vw;height:28.125vw !important;background-color:black;overflow:hidden;position:absolute;right:7vw">
-            <video id="video" volume="0" style="width:50vw;height:28.125vw !important;display:none">
+            <video id="video" style="width:50vw;height:28.125vw !important;display:none">
 
             </video>
             <img id="image">
@@ -455,6 +455,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         },1000);
         playNextMedia();
       }
+      $('#out').on('ended',function(){
+            $('#video').get(0).volume=1
+            console.log('video disuarakan lagi')
+          })  
       mediaNumber = 0;
       function playNextMedia(){
         url = '<?php echo base_url() ?>pegawai/json_playlist';
@@ -496,13 +500,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         this.mediaNumber = 0;
       }
       function playVideo(title,ext){
-        //console.log('playing video: '+title+'.'+ext)
-        $('#video').add('<source src="<?php echo base_url()?>uploads/media/'+title+'" type="video/mp4">').attr('volume','0').attr('autoplay','true').appendTo('#video')
-        vid = $('#video').get(0)
-        vid.volume = 0
-        vid.pause()
-        vid.currentTime = 0
-        vid.load()
+        console.log('playing video: '+title)
+        $('#video').add('<source src="<?php echo base_url()?>uploads/media/'+title+'" type="video/'+ext+'">').attr('autoplay','true').appendTo('#video')
+        //vid = $('#video').get(0)
+        //vid.volume = '100%'
+        $('#video').get(0).currentTime = 0
+        $('#video').get(0).load()
+        //vid.play()
+        //vidbackup = $('#video').find('source').get(0)
+        //vidbackup.volume = '100%'
         $('#video').fadeIn()
         $('#video').on('ended', function(){
           $('#video').empty()
@@ -580,6 +586,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       }
       function playAudioController(arraudio,soundid){
         //alert("anu"+soundid);
+        $('#video').get(0).volume=0
         this.currentsoundid=soundid;
         for(var i=0;i<arraudio.length-1;i++){
           if(i==0)playAudio(arraudio[0],soundid,0);
@@ -587,7 +594,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           var dursementara = x.duration;			
           dursementara = dursementara*1000;			
           dur = dur+dursementara;			
-          playAudio(arraudio[i+1],soundid,dur);			
+          playAudio(arraudio[i+1],soundid,dur);		
+          //console.log(i,arraudio.length)	
         }
         dur=0;
       }
