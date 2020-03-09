@@ -17,10 +17,9 @@
       <li>User management</li>
     </ul>
     <h2>Installation</h2>
-    <code>
-      git clone https://github.com/twikantoro/nori-onsite.git
-    </code>
-    <br />
-    <code>
-      composer install
-    </code>
+    * Clone and install dependencies
+    > git clone https://github.com/twikantoro/nori-onsite.git
+    > cd nori-onsite
+    > 
+    * Change base_url in application/config.php
+    * Database available in database/.
