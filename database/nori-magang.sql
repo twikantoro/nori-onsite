@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Mar 2020 pada 13.06
+-- Waktu pembuatan: 09 Mar 2020 pada 10.34
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -77,7 +77,13 @@ INSERT INTO `antrian` (`id_antrian`, `grup_antrian`, `urutan`, `loket`, `tanggal
 (88, 'B', 2, 5, '2020-02-20', '2020-02-20 13:29:02', '2020-02-20 14:14:06', '1'),
 (89, 'B', 3, 0, '2020-02-20', '2020-02-20 14:13:51', NULL, ''),
 (90, 'A', 3, 0, '2020-02-20', '2020-02-20 14:14:05', NULL, ''),
-(91, 'A', 1, 6, '2020-02-24', '2020-02-24 13:36:00', '2020-02-24 13:36:02', '1');
+(91, 'A', 1, 6, '2020-02-24', '2020-02-24 13:36:00', '2020-02-24 13:36:02', '1'),
+(92, 'B', 1, 1, '2020-03-08', '2020-03-08 12:11:16', '2020-03-08 12:11:17', '1'),
+(93, 'A', 1, 2, '2020-03-08', '2020-03-08 12:12:02', '2020-03-08 12:12:03', '1'),
+(94, 'B', 2, 3, '2020-03-08', '2020-03-08 12:17:30', '2020-03-08 12:17:31', '1'),
+(95, 'B', 3, 4, '2020-03-08', '2020-03-08 12:17:47', '2020-03-08 12:17:48', '1'),
+(96, 'B', 4, 5, '2020-03-08', '2020-03-08 12:17:52', '2020-03-08 12:17:52', '1'),
+(97, 'B', 5, 6, '2020-03-08', '2020-03-08 12:17:56', '2020-03-08 12:17:58', '1');
 
 -- --------------------------------------------------------
 
@@ -121,7 +127,7 @@ CREATE TABLE `konfigurasi` (
 --
 
 INSERT INTO `konfigurasi` (`id_konfigurasi`, `loket1_status`, `loket2_status`, `loket3_status`, `loket4_status`, `loket5_status`, `loket6_status`, `config_json`, `running_text`) VALUES
-(1, 1, 1, 1, 1, 1, 1, '{\"loket1_layani\":\"1\",\"loket2_layani\":\"2\",\"loket3_layani\":\"3\",\"loket4_layani\":\"4\",\"loket5_layani\":\"5\",\"loket6_layani\":\"6\",\"tambah_A\":\"a\",\"tambah_B\":\"b\"}', 'Diberitahukan kepada masyarakat bahwa hari ini adalah hari yang kau tunggu. Bertambah satu tahun usiamu bahagialah kamu. Yang kuberi bukan jam dan cincin bukan seikat bunga atau puisi juga kalung hati. Semoga tuhan melindungi kamu. Semoga tercapai semua angan dan cita-citamu.\r\n        ');
+(1, 0, 1, 1, 1, 0, 0, '{\"loket1_layani\":\"1\",\"loket2_layani\":\"2\",\"loket3_layani\":\"3\",\"loket4_layani\":\"4\",\"loket5_layani\":\"5\",\"loket6_layani\":\"6\",\"tambah_A\":\"a\",\"tambah_B\":\"b\"}', 'Diberitahukan kepada masyarakat bahwa hari ini adalah hari yang kau tunggu. Bertambah satu tahun usiamu bahagialah kamu. Yang kuberi bukan jam dan cincin bukan seikat bunga atau puisi juga kalung hati. Semoga tuhan melindungi kamu. Semoga tercapai semua angan dan cita-citamu.\r\n        ');
 
 -- --------------------------------------------------------
 
@@ -136,13 +142,6 @@ CREATE TABLE `playlist` (
   `jenis` text NOT NULL,
   `durasi` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `playlist`
---
-
-INSERT INTO `playlist` (`id`, `urutan`, `nama`, `jenis`, `durasi`) VALUES
-(2, 1, 'images3.jpg', 'image/jpeg', 10);
 
 -- --------------------------------------------------------
 
@@ -190,11 +189,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `nama`, `role`, `aktif`) VALUES
-(1, 'poi', 'f082f5ba2cadab8af40de038ab7a040d', '', 'kasir', 1),
 (2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'admin', 1),
-(3, 'kasir', 'c7911af3adbd12a035b289556d96470a', 'mang kasir', 'admin', 0),
-(4, 'kasir2', 'c7911af3adbd12a035b289556d96470a', 'kasir dua', 'kasir', 1),
-(5, 'toro', 'd140ee599d8f12b049de069abed2adad', 'Wikantoro', 'kasir', 0);
+(6, 'Kasir', '81dc9bdb52d04dc20036dbd8313ed055', '', 'kasir', 1);
 
 --
 -- Indexes for dumped tables
@@ -245,19 +241,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `antrian`
 --
 ALTER TABLE `antrian`
-  MODIFY `id_antrian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id_antrian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT untuk tabel `playlist`
 --
 ALTER TABLE `playlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
