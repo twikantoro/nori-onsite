@@ -45,7 +45,7 @@
               <div class="tab-content" id="custom-tabs-three-tabContent">
                 <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
                   <form id="formGeneral" enctype="application/x-www-form-urlencoded">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label>Tata Letak</label>
                       <div class="row">
                         <div class="col">
@@ -63,7 +63,7 @@
                       </div>
 
 
-                    </div>
+                    </div> -->
                     <div class="form-group">
                       <label>Running Text</label>
                       <textarea class="form-control" name="running_text" rows="3" placeholder="Enter ..."><?php echo $settings->running_text ?></textarea>
@@ -104,8 +104,11 @@
                     </tbody>
                   </table>
                   <div id="error"></div>
+                  <div id="error-upload-media"></div>
                   <button type="button" onclick="addRow();" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp;&nbsp;&nbsp;Tambah</button>
                   <br /><br />
+                  <!-- <p><input type="checkbox" id="muteVideo" <?php if($settings->mute_video){echo "checked";} ?> /> Senyapkan video</p>
+                  <br /> -->
                   <button id="btnMedia" type="button" onclick="submitMedia();" class="btn btn-primary">Simpan</button>
                 </div>
                 <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">
@@ -150,6 +153,7 @@
 </div>
 <form id="urutans">
   <input type="hidden" name="shit" value="" id="urutansInput">
+  <!-- <input type="checkbox" style="display:none" name="mute_video"  id="urutansInput_muteVideo"> -->
 </form>
 <script>
   $(document).ready(function(){
@@ -258,8 +262,12 @@
   function renderMediaRowEmpty()
   {
     rowsum = getRowSum();
+    console.log("rowsum: ",rowsum)
+    num = getHighestMedia()
+    console.log("highestmedia: ", num)
     incHighestMedia()
     num = getHighestMedia()
+    console.log("highestmedia: ", num)
     returns = '<tr class="rowx" id="row'+num+'">'
     //returns += '<td>'+rowsum+'</td>'
     returns += '<td id="nama'+num+'"><form enctype="multipart/form-data" id="form'+num+'"><input type="file" name="media" onchange="fileIsReady('+num+');"></td>'
@@ -307,7 +315,15 @@ post_max_size = 1000M;
       data: fd,
       success:function(result){
         console.log(result)
-        res = JSON.parse(result);
+        try {
+          res = JSON.parse(result);
+        } catch (error) {
+          maxsize = result.split(" ")[12]
+          alert("file terlalu besar, server hanya menerima maksimal "
+          +Math.floor(maxsize/1000)+
+          " KB. Bisa dikonfigurasi di server")
+        }
+        
         if(res.success){
           $('#btnUpload'+num).removeClass('btn-primary').html('<i class="fas fa-check"></i>')
           $('#btnUpload'+num).addClass('btn-success')
@@ -322,7 +338,21 @@ post_max_size = 1000M;
 
           //doneUploading(num)
         } else {
-          console.log(result)
+          if(result.substring(0,1)=="{"){
+            try {
+              resultParsed = JSON.parse(result)
+            } catch (error) {
+              alert("file terlalu besar")
+            }
+            
+            console.log("error uploading:",resultParsed.message)
+            alert(resultParsed.message.error)
+            $('#error').html(result.message)
+            $('#error-upload-media').html(result.message)
+          } else {
+            alert(result)
+          } 
+          
         }
       },
       error:function(e){
@@ -358,11 +388,11 @@ post_max_size = 1000M;
     $.getJSON(url,function(result){
       for(i=0;i<result.length;i++){
         if(getHighestMedia()<result[i].id){
-          setHighestMedia(result[i].id)
+          setHighestMedia(result[i].urutan)
         }
         createMediaRow(result[i])
         if(typeof result[i-1]=='undefined'){ //min
-          fillAction(result[i].id,null,result[i+1].id)
+          fillAction(result[i].id,null,result[i+1] ? result[i+1].id : null)
         } else {
           if(i<result.length-1) { //1-(max-1)
             fillAction(result[i].id,result[i-1].id,result[i+1].id)    
@@ -511,10 +541,13 @@ post_max_size = 1000M;
   function submitMedia(){
     $('#btnMedia').text('Menyimpan...')
     urutans = new Array()
+    rows = $('.rowx')
     for(i=0;i<rows.length;i++){
       urutans[i] = $(rows[i]).attr('id').substr(3)
     }
     $('#urutansInput').val(JSON.stringify(urutans))
+    // checked = $('#muteVideo').is(':checked')
+    // $('#urutansInput_muteVideo').prop('checked',checked)
     var fd = new FormData($("#urutans").get(0));
     $.ajax({
       url: '<?php echo base_url("admin/submitMedia")?>',  
@@ -522,6 +555,9 @@ post_max_size = 1000M;
       data: fd,
       success:function(result){
         $('#btnMedia').removeClass('btn-primary').addClass('disabled btn-success').text('Tersimpan!')
+        setTimeout(() => {
+          $('#btnMedia').addClass('btn-primary').removeClass('disabled btn-success').text('Simpan')
+        }, 2000);
       },
       cache: false,
       contentType: false,

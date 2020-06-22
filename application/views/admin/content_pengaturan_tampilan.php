@@ -35,7 +35,7 @@
             <!-- form start -->
 
             <div class="card-body">
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label>Tata Letak</label>
                 <div class="row">
                   <div class="col">
@@ -53,7 +53,7 @@
                 </div>
 
 
-              </div>
+              </div> -->
               <div class="form-group">
                 <label>Running Text</label>
                 <textarea class="form-control" name="running_text" rows="3" placeholder="Enter ..."><?php echo $settings->running_text ?></textarea>

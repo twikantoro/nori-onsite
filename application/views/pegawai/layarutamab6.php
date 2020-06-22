@@ -454,9 +454,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           cekKeaktifan();
         },1000);
         playNextMedia();
+        $('#video').get(0).volume=0
       }
       $('#out').on('ended',function(){
-            $('#video').get(0).volume=1
+            //$('#video').get(0).volume=1
             console.log('video disuarakan lagi')
           })  
       mediaNumber = 0;
